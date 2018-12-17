@@ -23,7 +23,7 @@ class DatabaseHelper {
   DatabaseHelper.internal();
 
   initDatabase() async {
-    Directory documentDirectory = await getApplicationDocumentsDirectory();
+    Directory documentDirectory = await getExternalStorageDirectory();
     String path = join(documentDirectory.path, "sample.db");
     var ourDb = await openDatabase(path, version: databaseVersion, onCreate: _onCreate);
     return ourDb;

@@ -21,18 +21,6 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
     _presenter = new LoginPagePresenter(this);
   }
 
-  @override
-  initState() {
-    super.initState();
-    getExternalStoragePermission();
-  }
-
-  void getExternalStoragePermission() {
-    SimplePermissions.requestPermission(Permission.WriteExternalStorage).then((value) {
-      print(value);
-    });
-  }
-
   void _submit() {
     final form = formKey.currentState;
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_login_sample/SplashScreen.dart';
 import 'package:flutter_login_sample/pages/home_page.dart';
 import 'package:flutter_login_sample/pages/login/login_page.dart';
 import 'package:flutter_login_sample/pages/signup/sign_up_page.dart';
@@ -9,7 +10,7 @@ final routes = {
   '/login': (BuildContext context) => new LoginPage(),
   '/home': (BuildContext context) => new HomePage(),
   '/signUp': (BuildContext context) => new SignUpPage(),
-  '/': (BuildContext context) => new LoginPage(),
+  '/': (BuildContext context) => new SplashScreen(),
 };
 
 class MyApp extends StatelessWidget {
