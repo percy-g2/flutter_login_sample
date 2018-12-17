@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login_sample/pages/login/login_presenter.dart';
-import 'package:simple_permissions/simple_permissions.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -107,7 +106,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
 
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Login"),
+        title: new Text("Login")
       ),
       key: scaffoldKey,
       body: new Container(

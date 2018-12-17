@@ -39,8 +39,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   _checkPermission() async {
     bool connectionResult = await SimplePermissions.checkPermission(Permission.WriteExternalStorage);
     if (connectionResult) {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => LoginPage()));
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => new LoginPage()));
     } else {
       exit(0);
     }
