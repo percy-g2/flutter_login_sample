@@ -47,7 +47,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       onPressed: _submit,
       child: new Text("Login"),
       textColor: Colors.white,
-      color: Colors.blueAccent[700],
+      color: Colors.blue,
     );
     var singUpBtn = new FlatButton(
       onPressed: () {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login_sample/models/user.dart';
 import 'package:flutter_login_sample/pages/signup/sign_up_presenter.dart';
-
+import 'dart:core';
 class SignUpPage extends StatefulWidget {
   @override
   _SignUpPageState createState() => new _SignUpPageState();
@@ -22,7 +22,7 @@ class _SignUpPageState extends State<SignUpPage> implements SignUpContract {
   }
 
   void _submit() {
-    if (_password.compareTo(_rePassword) == 0) {
+    if (identical(_password, _rePassword)) {
       final form = formKey.currentState;
 
       if (form.validate()) {
