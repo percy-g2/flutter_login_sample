@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_login_sample/models/user.dart';
 import 'package:flutter_login_sample/pages/signup/sign_up_presenter.dart';
 import 'dart:core';
+import 'package:fluttertoast/fluttertoast.dart';
+
 class SignUpPage extends StatefulWidget {
   @override
   _SignUpPageState createState() => new _SignUpPageState();
@@ -34,14 +36,30 @@ class _SignUpPageState extends State<SignUpPage> implements SignUpContract {
         });
       }
     } else{
-      _showSnackBar("Password didn't match");
+      _showErrorToast("Password didn't match");
     }
   }
 
-  void _showSnackBar(String text) {
-    scaffoldKey.currentState.showSnackBar(new SnackBar(
-      content: new Text(text),
-    ));
+  void _showSuccessToast(String text) {
+    Fluttertoast.showToast(
+        msg: text,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIos: 1,
+        backgroundColor: Colors.green[900],
+        textColor: Colors.white
+    );
+  }
+
+  void _showErrorToast(String text) {
+    Fluttertoast.showToast(
+        msg: text,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIos: 1,
+        backgroundColor: Colors.red[900],
+        textColor: Colors.white
+    );
   }
 
   bool _obscureText = true;
@@ -120,7 +138,7 @@ class _SignUpPageState extends State<SignUpPage> implements SignUpContract {
 
   @override
   void onSignUpError(String error) {
-    _showSnackBar(error);
+    _showErrorToast(error);
     setState(() {
       _isLoading = false;
     });
@@ -129,10 +147,10 @@ class _SignUpPageState extends State<SignUpPage> implements SignUpContract {
   @override
   void onSignUpSuccess(bool value) async {
     if (value) {
-      _showSnackBar("Success");
+      _showSuccessToast("Success");
       Navigator.pop(context,true);
     } else {
-      _showSnackBar("Error");
+      _showErrorToast("Error");
     }
   }
 }

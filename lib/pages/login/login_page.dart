@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login_sample/pages/login/login_presenter.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -32,10 +33,26 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
     }
   }
 
-  void _showSnackBar(String text) {
-    scaffoldKey.currentState.showSnackBar(new SnackBar(
-      content: new Text(text),
-    ));
+  void _showSuccessToast(String text) {
+    Fluttertoast.showToast(
+        msg: text,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIos: 1,
+        backgroundColor: Colors.green[900],
+        textColor: Colors.white
+    );
+  }
+
+  void _showErrorToast(String text) {
+    Fluttertoast.showToast(
+        msg: text,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIos: 1,
+        backgroundColor: Colors.red[900],
+        textColor: Colors.white
+    );
   }
 
   bool _obscureText = true;
@@ -119,7 +136,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
 
   @override
   void onLoginError(String error) {
-    _showSnackBar(error);
+    _showErrorToast(error);
     setState(() {
       _isLoading = false;
     });
@@ -128,10 +145,10 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
   @override
   void onLoginSuccess(bool value) async {
     if (value) {
-      _showSnackBar("Success");
+      _showSuccessToast("Success");
       Navigator.of(context).pushNamed("/home");
     } else {
-      _showSnackBar("Error");
+      _showErrorToast("Error");
     }
     setState(() {
       _isLoading = false;

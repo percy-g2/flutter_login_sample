@@ -22,6 +22,7 @@ dependencies:
   sqflite: ^0.13.0
   path_provider: ^0.4.0
   simple_permissions: ^0.1.9
+  fluttertoast: ^2.1.5
 
 dev_dependencies:
   flutter_test:
